@@ -3,12 +3,7 @@ import requests
 import xlsxwriter
 
 workbook = xlsxwriter.Workbook('scraper_results.xlsx')
-worksheet = workbook.add_worksheet()
-
-worksheet.write('A1', 'Hello world')
-
-workbook.close()
-
+worksheet = workbook.add_worksheet('results')
 
 # specify the url
 page_link = 'https://www.otodom.pl/sprzedaz/mieszkanie/wroclaw/'
@@ -20,8 +15,11 @@ page_response = requests.get(page_link, timeout=5)
 page_content = BeautifulSoup(page_response.content, "html.parser")
 
 # looping over content, finding a specific class, getting value
-price_list = []
+# price_list = [] price.get_text("|", strip=True)
+row = 0
+col = 0
 for price in page_content.find_all(class_='offer-item-price'):
-	price_list.append(price.get_text("|", strip=True))
+	worksheet.write(row, col, price.get_text("|", strip=True))
+	row += 1
 
-print(price_list)
+workbook.close()
