@@ -1,4 +1,6 @@
-link = "www.dupa.pl/?page="
+s = "Your first value is {} your second value is"
 
-for num in range(0, 9):
-  print(link + str(num))
+for i in range(0, 9):
+  print(s.format(i))
+
+
