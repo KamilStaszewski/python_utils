@@ -1,6 +1,4 @@
-s = "Your first value is {} your second value is"
+import pandas as pd
 
-for i in range(0, 9):
-  print(s.format(i))
-
-
+df = pd.read_excel('./scraper_results.xlsx')
+print df.info()
