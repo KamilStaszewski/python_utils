@@ -1,4 +1,4 @@
-link = "www.dupa.pl/?page="
+import pandas as pd
 
-for num in range(0, 9):
-  print(link + str(num))
+df = pd.read_excel('./scraper_results.xlsx')
+print df.info()
